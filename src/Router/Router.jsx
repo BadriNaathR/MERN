@@ -17,8 +17,9 @@ const router = createBrowserRouter([
           element : <Menu/>
         }
         
-      ]
-    },
+      ],
+      
+    }, 
   ]);
 
 export default router;
