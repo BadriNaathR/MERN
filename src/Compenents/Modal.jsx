@@ -82,7 +82,7 @@ const Modal = () => {
 
             {/* error */}
             {
-              errorMessage ? <p className="text-red text-xs italic">{errorMessage}</p> : ""
+              errorMessage ? <p className="text-orange text-xs italic">{errorMessage}</p> : ""
             }
 
             {/* login btn */}
@@ -96,9 +96,9 @@ const Modal = () => {
 
             <p className="text-center my-2">
               Donot have an account?{" "}
-              <Link to="/signup" className="underline text-red ml-1">
+              <a href="/signup"  className="underline text-blue ml-1">
                 Signup Now
-              </Link>{" "}
+              </a>{" "}
             </p>
 
             <button 
@@ -110,13 +110,13 @@ const Modal = () => {
 
           {/* social sign in */}
           <div className="text-center space-x-3 mb-5">
-            <button className="btn btn-circle hover:bg-orange hover:text-white" onClick={handleLogin}>
+            <button className="btn btn-circle hover:bg-green hover:text-white" onClick={handleLogin}>
               <FaGoogle />
             </button>
-            <button className="btn btn-circle hover:bg-orange hover:text-white">
+            <button className="btn btn-circle hover:bg-green hover:text-white">
               <FaFacebookF />
             </button>
-            <button className="btn btn-circle hover:bg-orange hover:text-white">
+            <button className="btn btn-circle hover:bg-green hover:text-white">
             <FaGithub />
             </button>
           </div>
