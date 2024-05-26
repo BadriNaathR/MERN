@@ -8,7 +8,9 @@ import { AuthContext } from '../context/AuthProvider'
 const Main = () => {
   const {loading} = useContext(AuthContext);
   return (
-    <div>
+    
+      loading ? <p>Loading........</p>:
+      <div>
         <Navbar/>
         <div className='min-h-screen'>
           <Outlet/>

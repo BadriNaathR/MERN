@@ -110,13 +110,13 @@ const Modal = () => {
 
           {/* social sign in */}
           <div className="text-center space-x-3 mb-5">
-            <button className="btn btn-circle hover:bg-green hover:text-white" onClick={handleLogin}>
+            <button className="btn btn-circle hover:bg-orange hover:text-white" onClick={handleLogin}>
               <FaGoogle />
             </button>
-            <button className="btn btn-circle hover:bg-green hover:text-white">
+            <button className="btn btn-circle hover:bg-orange hover:text-white">
               <FaFacebookF />
             </button>
-            <button className="btn btn-circle hover:bg-green hover:text-white">
+            <button className="btn btn-circle hover:bg-orange hover:text-white">
             <FaGithub />
             </button>
           </div>
