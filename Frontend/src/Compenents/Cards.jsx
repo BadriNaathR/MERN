@@ -1,14 +1,67 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
+import Swal from 'sweetalert2'
+import useCart from "../hooks/useCart";
 
 const Cards = ({ item }) => {
+  const { name, image, price, recipe, _id } = item;
+
+  const {user} = useContext(AuthContext);
+  const [cart, refetch] = useCart();
+  const navigate = useNavigate();
+  const location = useLocation();
   // console.log(item)
   const [isHeartFilled, setIsHeartFilled] = useState(false);
 
   const handleHeartClick = () => {
     setIsHeartFilled(!isHeartFilled);
-  };
+  }; 
+
+  // add to cart handler
+  const handleAddToCart = item => {
+    // console.log(item);
+    if(user && user.email){
+        const cartItem = {menuItemId: _id, name, quantity : 1, image, price, email: user.email};
+        //console.log(cartItem);
+        fetch("http://localhost:3001/carts",{
+          method : "POST" , 
+          headers :{
+            'content-type' : 'application/json'
+          },
+          body:JSON.stringify(cartItem)
+        })
+        .then((res) => res.json())
+        .then((data) =>{
+          if(data.insertedId){
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Food added on the cart.',
+              showConfirmButton: false,
+              timer: 1500
+            })
+              
+          }
+        });
+    }
+    else{
+        Swal.fire({
+            title: 'Please login to order the food',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Login now!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/signup', {state: {from: location}})
+            }
+          })
+    }
+}
+
   return (
     <div to={`/menu/${item._id}`} className="card shadow-xl relative mr-5 md:my-5">
       <div
@@ -31,7 +84,7 @@ const Cards = ({ item }) => {
           <h5 className="font-semibold">
             <span className="text-sm text-red">$ </span> {item.price}
           </h5>
-          <button className="btn bg-orange text-white">Add to Cart </button>
+          <button onClick={() => handleAddToCart(item)} className="btn bg-orange text-white">Add to Cart </button>
         </div>
       </div>
     </div>
