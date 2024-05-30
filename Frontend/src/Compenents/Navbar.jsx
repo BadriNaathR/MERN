@@ -33,25 +33,14 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <a href="/" className="text-orange">
+        <a href="/">
           Home
         </a>
       </li>
       <li tabIndex={0}>
-        <details>
-          <summary>Menu</summary>
-          <ul className="p-2">
-            <li>
-              <a href="/menu">All</a>
-            </li>
-            <li>
-              <a>Salad</a>
-            </li>
-            <li>
-              <a>Pizza</a>
-            </li>
-          </ul>
-        </details>
+      <a href="/menu">
+          Menu
+        </a>
       </li>
       <li tabIndex={0}>
         <details>
@@ -69,9 +58,9 @@ const Navbar = () => {
           </ul>
         </details>
       </li>
-      <li>
+      {/* <li>
         <a>Offers</a>
-      </li>
+      </li> */}
     </>
   );
   return (

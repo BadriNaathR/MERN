@@ -95,7 +95,7 @@ const CartPage = () => {
           if(data.deletedCount>0){
             Swal.fire({
               title : "Deleted!",
-              text : "Your file has been deleted...",
+              text : "The Item has been deleted from the cart...",
               icon : "success"
             });
           }
